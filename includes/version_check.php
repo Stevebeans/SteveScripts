@@ -16,29 +16,44 @@ class SteveScripts_Update_Checker {
   }
 
   public function check_update($transient) {
-      if (empty($transient->checked)) {
-          return $transient;
-      }
+   
 
-      // Check the external API for the latest version
-      $response = wp_remote_get($this->update_uri);
+    if (empty($transient->checked)) {
+        
+        return $transient;
+    }
 
-      if (is_wp_error($response) || wp_remote_retrieve_response_code($response) !== 200) {
-          return $transient;
-      }
+    // Check the external API for the latest version
+    $response = wp_remote_get($this->update_uri);
 
-      $data = json_decode(wp_remote_retrieve_body($response));
+    if (is_wp_error($response)) {
+       
+        return $transient;
+    }
 
-      if (version_compare($this->current_version, $data->tag_name, '<')) {
-          $plugin_data = new stdClass();
-          $plugin_data->slug = $this->plugin_slug;
-          $plugin_data->new_version = $data->tag_name;
-          $plugin_data->url = $data->html_url;
-          $plugin_data->package = $data->zipball_url;
+    if (wp_remote_retrieve_response_code($response) !== 200) {
+        
+        return $transient;
+    }
 
-          $transient->response[$this->plugin_file] = $plugin_data;
-      }
+    $data = json_decode(wp_remote_retrieve_body($response), true);
 
-      return $transient;
-  }
+    
+
+    if (version_compare($this->current_version, $data['tag_name'], '<')) {
+        $plugin_data = new stdClass();
+        $plugin_data->slug = $this->plugin_slug;
+        $plugin_data->new_version = $data['tag_name'];
+        $plugin_data->url = $data['html_url'];
+        $plugin_data->package = $data['zipball_url'];
+
+        $transient->response[$this->plugin_file] = $plugin_data;
+
+    } else {
+        $transient->no_update[$this->plugin_file] = $data;
+    }
+
+    return $transient;
+}
+
 }
