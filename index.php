@@ -1,12 +1,13 @@
 <?php
 /**
  * Plugin Name: SteveScripts
- * Plugin URI:  https://payvisv2.onpressidium.com/
+ * Plugin URI:  https://greatnessdigital.com/
  * Description: This is a custom plugin written for Zeth Owen at Greatness Digital
- * Version:     1.1
+ * Version:     1.2
  * Author:      Steve Beliveau
- * Author URI:  https://payvisv2.onpressidium.com/
+ * Author URI:  https://greatnessdigital.com/
  * License:     GPL2
+ * Tested up to: 6.3.2
  */
 
 // Prevent direct file access.

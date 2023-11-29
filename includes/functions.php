@@ -28,7 +28,8 @@ function stevescripts_display_file_url_shortcode($atts) {
   if ($fileField && isset($fileField['url'])) {
       $url = $fileField['url'];
       // Create a link to the file
-      return '<a href="' . esc_url($url) . '" download="Download File">Download File</a>';
+      return '<a href="' . esc_url($url) . '" download>Download File</a>';
+
   }
 
   return ''; // Return empty string if no file is found
