@@ -3,7 +3,7 @@
  * Plugin Name: SteveScripts
  * Plugin URI:  https://payvisv2.onpressidium.com/
  * Description: This is a custom plugin written for Zeth Owen at Greatness Digital
- * Version:     0.1
+ * Version:     1.1
  * Author:      Steve Beliveau
  * Author URI:  https://payvisv2.onpressidium.com/
  * License:     GPL2
