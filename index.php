@@ -51,3 +51,4 @@ $update_checker = new SteveScripts_Update_Checker(
     plugin_basename(__FILE__)
 );
 // include the directory of the includes folder
+;
