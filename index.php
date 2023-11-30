@@ -3,7 +3,7 @@
  * Plugin Name: SteveScripts
  * Plugin URI:  https://greatnessdigital.com/
  * Description: This is a custom plugin written for Zeth Owen at Greatness Digital
- * Version:     1.2
+ * Version:     1.2.1
  * Author:      Steve Beliveau
  * Author URI:  https://greatnessdigital.com/
  * License:     GPL2

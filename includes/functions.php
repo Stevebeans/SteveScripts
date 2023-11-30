@@ -36,3 +36,29 @@ function stevescripts_display_file_url_shortcode($atts) {
 }
 
 add_shortcode('ss_wp_file', 'stevescripts_display_file_url_shortcode');
+
+// Second function for a new shortcode 
+
+function ss_shortcode_two($atts) {
+  $atts = shortcode_atts(array(
+      'post_id' => get_the_ID(),
+  ), $atts);
+
+  // Get the custom field sales_sheet_url and display it if it exists
+
+  $fileField = get_field('sales_sheet_url', $atts['post_id']);
+
+
+  // Check if the field is set and has a URL
+
+  if ($fileField) {
+   
+      // Create a link to the file
+      return '<a href="' . esc_url($fileField) . '" download>Download File</a>';
+
+  }
+
+  return ''; // Return empty string if no file is found
+}
+
+add_shortcode('ss_ss_file', 'ss_shortcode_two');
